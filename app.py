@@ -88,3 +88,8 @@ def add_file():
     else:
         file.save(save_path)
     return redirect(url_for('index'))
+
+# To download files available on the web
+@app.route('/download/<filename>', methods = ['GET'])
+def download_file(filename):
+    return send_from_directory('files', filename, as_attachment = True)
