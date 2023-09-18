@@ -44,3 +44,21 @@ def index():
     con.commit()
     files = cur.fetchall()
     return render_template('index.html', files = files)
+
+# There are two parts to delete information and insert information in this section, which is related to sql
+@app.route('/', methods = ['POST'])
+def add_file():
+    # Data deletion section
+    try:
+        delete_all_value = request.form.get('delete_all')
+    except:
+        delete_all_value = None
+    if delete_all_value == "Delete All":
+        con,cur = sql_code("database/data_of_files.db")
+        cur.execute("DELETE FROM data")
+        con.commit()
+        address = glob("files/*")
+        for file_path in address:
+            os.remove(file_path)
+        return redirect(url_for('index'))
+    
