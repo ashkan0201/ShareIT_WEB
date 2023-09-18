@@ -61,4 +61,30 @@ def add_file():
         for file_path in address:
             os.remove(file_path)
         return redirect(url_for('index'))
-    
+    # Information collection section
+    try:
+        con,cur = sql_code("database/data_of_files.db")
+        file = request.files['file']
+        filename = werkzeug.utils.secure_filename(file.filename)
+        if len(filename) >= 1:
+            save_path = 'files/' + filename
+        else:
+            raise
+        
+        if os.path.isfile(save_path) == False:
+            filename_parts = os.path.splitext(filename)
+            file.seek(0, 2)
+            file_size = file.tell()
+            file.seek(0)
+            formatted_size = format_size(file_size)
+            data = (str(filename_parts[0]), str(filename_parts[1]), formatted_size, datetime.today().ctime())
+            cur.execute("INSERT INTO data VALUES (?,?,?,?)",data)
+            con.commit()
+            con.close()
+        else:
+            raise
+    except:
+        pass
+    else:
+        file.save(save_path)
+    return redirect(url_for('index'))
