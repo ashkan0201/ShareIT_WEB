@@ -24,7 +24,6 @@ def sql_code(path):
 con,cur = sql_code("database/data_of_files.db")
 cur.execute("DELETE FROM data")
 con.commit()
-con.close()
 
 # A function that calculates the volume
 def format_size(size):
@@ -43,7 +42,6 @@ def index():
     con,cur = sql_code("database/data_of_files.db")
     cur.execute("SELECT * FROM data")
     con.commit()
-    con.close()
     files = cur.fetchall()
     return render_template('index.html', files = files)
 
@@ -59,7 +57,6 @@ def add_file():
         con,cur = sql_code("database/data_of_files.db")
         cur.execute("DELETE FROM data")
         con.commit()
-        con.close()
         address = glob("files/*")
         for file_path in address:
             os.remove(file_path)
