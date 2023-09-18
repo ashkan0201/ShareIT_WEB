@@ -1,0 +1,1 @@
+In this section, every file that is uploaded on the web is stored in this address and all files are accessible to the admin.
