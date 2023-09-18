@@ -13,3 +13,9 @@ app = Flask(__name__, template_folder = "template")
 address = glob("files/*")
 for file_path in address:
     os.remove(file_path)
+
+# sql preparation
+def sql_code(path):
+    con = sqlite3.connect(path)
+    cur = con.cursor()
+    return con , cur
