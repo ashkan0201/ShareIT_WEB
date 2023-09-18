@@ -19,3 +19,8 @@ def sql_code(path):
     con = sqlite3.connect(path)
     cur = con.cursor()
     return con , cur
+
+# Emptying things that are in the database
+con,cur = sql_code("database/data_of_files.db")
+cur.execute("DELETE FROM data")
+con.commit()
