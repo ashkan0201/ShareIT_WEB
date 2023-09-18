@@ -1,6 +1,6 @@
 # ShareIT_WEB
 
-![Logo](	https://github.com/ashkan0201/ShareIT_WEB/blob/main/img/Shot%200001.png?raw=true)
+![Logo](		https://github.com/ashkan0201/ShareIT_WEB/blob/main/img/for_app.png?raw=true)
 
 In this project, a web will be created in which the file can be uploaded.
 That means you can upload the file you want on the web.
