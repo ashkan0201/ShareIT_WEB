@@ -35,3 +35,12 @@ def format_size(size):
     size = round(size, 2)
     formatted_size = f"{size} {units[index]}"
     return formatted_size
+
+# Creating the main function to connect to the front end and send data to the web
+@app.route('/')
+def index():
+    con,cur = sql_code("database/data_of_files.db")
+    cur.execute("SELECT * FROM data")
+    con.commit()
+    files = cur.fetchall()
+    return render_template('index.html', files = files)
