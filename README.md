@@ -30,12 +30,14 @@ It is used for communication between files.
 **Install library**
 
 ```bash
-  pip install pysqlite3 
   pip install flask
   pip install glob2
   pip install Werkzeug
 ```
-
+or
+```bash
+  pip install -r requirements.txt
+```
 **Start the server**
 
 ```bash
